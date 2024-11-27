@@ -16,6 +16,7 @@ module.exports = {
 
       },
       'stone' :{
+        100:'#F2EBE9',
         900:'#261B0E'
       },
       gray: colors.gray,
