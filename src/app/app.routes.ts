@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from '@modules/pages/home/home.component';
 
 export const routes: Routes = [
   {
     path: 'home',
-    loadComponent: () =>
-      import('@modules/pages/home/home.component').then((c) => c.HomeComponent),
+    component: HomeComponent,
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
