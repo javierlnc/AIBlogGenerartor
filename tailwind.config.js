@@ -21,7 +21,8 @@ module.exports = {
       'stone-light':'#F2EBE940',
       gray: colors.gray,
       yellow: colors.yellow,
-      black: colors.black
+      black: colors.black,
+      red: colors.red
 
     },
     extend: {},

@@ -8,7 +8,12 @@
     <div class="flex flex-col text-stone-900 items-center gap-2 justify-center">
       <h1 class="text-2xl font-bold">Sing In</h1>
       <p></p>
-      <form action="" class="flex flex-col gap-2 w-full">
+      <form
+        action=""
+        [formGroup]="formLogin"
+        (ngSubmit)="onSubmit()"
+        class="flex flex-col gap-2 w-full"
+      >
         <div class="relative">
           <div class="absolute top-1 left-1 p-2">
             <svg
@@ -28,9 +33,23 @@
           </div>
           <input
             type="email"
-            placeholder="Correo Electronico"
+            name="email"
+            placeholder="Correo"
+            formControlName="email"
+            id="email"
             class="w-full bg-stone-light py-3 px-12 rounded-md focus:ring-1 focus:ring-orange-50 focus:outline-none"
           />
+          <div
+            *ngIf="isFieldInvalid('email')"
+            class="flex gap-2 text-sm justify-center p-1 text-red-600 rounded-md"
+          >
+            <span *ngIf="hasError('email', 'required')">
+              El correo es obligatorio.</span
+            >
+            <span *ngIf="hasError('email', 'email')"
+              >Formato de correo inválido.</span
+            >
+          </div>
         </div>
         <div class="relative">
           <div class="absolute top-1 left-1 p-2">
@@ -52,9 +71,18 @@
 
           <input
             type="password"
-            placeholder="password"
+            placeholder="Contraseña"
+            formControlName="password"
             class="w-80 bg-stone-light py-3 px-12 rounded-md focus:ring-1 focus:ring-orange-50 focus:outline-none"
           />
+          <div
+            class="flex gap-2 text-sm justify-center text-red-600"
+            *ngIf="isFieldInvalid('email')"
+          >
+            <span *ngIf="hasError('password', 'required')"
+              >La contraseña es obligatorio.</span
+            >
+          </div>
         </div>
         <button
           type="submit"
