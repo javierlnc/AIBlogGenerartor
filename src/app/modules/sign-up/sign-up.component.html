@@ -8,7 +8,11 @@
     <div class="flex flex-col text-stone-900 items-center gap-2 justify-center">
       <h1 class="text-2xl font-bold">Sing Up</h1>
       <p></p>
-      <form action="" class="flex flex-col gap-2 w-full">
+      <form
+        action=""
+        class="flex flex-col gap-2 w-full"
+        [formGroup]="formRegis"
+      >
         <div class="relative">
           <div class="absolute top-1 left-1 p-2">
             <svg
@@ -29,8 +33,19 @@
           <input
             type="text"
             placeholder="Nombre"
+            id="name"
+            name="name"
+            formControlName="name"
             class="w-full bg-stone-light py-3 px-12 rounded-md focus:ring-1 focus:ring-orange-50 focus:outline-none"
           />
+          <div
+            *ngIf="isFieldInvalid('name')"
+            class="flex gap-2 text-sm justify-center p-1 text-red-600 rounded-md"
+          >
+            <span *ngIf="hasError('name', 'required')"
+              >El nombre es obligatorio.</span
+            >
+          </div>
         </div>
         <div class="relative">
           <div class="absolute top-1 left-1 p-2">
@@ -51,9 +66,21 @@
           </div>
           <input
             type="email"
+            formControlName="email"
             placeholder="Correo Electronico"
             class="w-full bg-stone-light py-3 px-12 rounded-md focus:ring-1 focus:ring-orange-50 focus:outline-none"
           />
+          <div
+            *ngIf="isFieldInvalid('email')"
+            class="flex gap-2 text-sm justify-center p-1 text-red-600 rounded-md"
+          >
+            <span *ngIf="hasError('email', 'required')">
+              El correo es obligatorio.</span
+            >
+            <span *ngIf="hasError('email', 'email')"
+              >Formato de correo inválido.</span
+            >
+          </div>
         </div>
         <div class="relative">
           <div class="absolute top-1 left-1 p-2">
@@ -75,9 +102,18 @@
 
           <input
             type="password"
-            placeholder="password"
+            placeholder="Contraseña"
+            formControlName="password"
             class="w-80 bg-stone-light py-3 px-12 rounded-md focus:ring-1 focus:ring-orange-50 focus:outline-none"
           />
+          <div
+            *ngIf="isFieldInvalid('password')"
+            class="flex gap-2 text-sm justify-center p-1 text-red-600 rounded-md"
+          >
+            <span *ngIf="hasError('password', 'required')">
+              La contraseña es obligatoria.</span
+            >
+          </div>
         </div>
         <div class="relative">
           <div class="absolute top-1 left-1 p-2">
@@ -100,8 +136,24 @@
           <input
             type="password"
             placeholder="Confirma contraseña"
+            formControlName="confirmPassword"
             class="w-80 bg-stone-light py-3 px-12 rounded-md focus:ring-1 focus:ring-orange-50 focus:outline-none"
           />
+          <div
+            *ngIf="isFieldInvalid('confirmPassword')"
+            class="flex gap-2 text-sm justify-center p-1 text-red-600 rounded-md"
+          >
+            <span *ngIf="hasError('confirmPassword', 'required')">
+              Debe confirmar la contraseña.
+            </span>
+            <div
+              *ngIf="
+                !hasError('confirmPassword', 'required') && isPasswordMismatch()
+              "
+            >
+              Las contraseñas no coinciden.
+            </div>
+          </div>
         </div>
         <button
           class="bg-orange-50 w-full text-gray-900 hover:bg-yellow-300 p-2 rounded-full text-lg font-semibold mt-8 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
