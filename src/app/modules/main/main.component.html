@@ -31,7 +31,16 @@
   <div class="p-10">
     <div class="bg-white mt-10 mx-auto p-10 rounded-lg">
       <h2 class="text-2xl text-center font-bold">Blog generado</h2>
-      <div></div>
+      <div>
+        <ngx-spinner
+          bdColor="rgba(0, 0, 0, 0.8)"
+          size="medium"
+          color="#f2b591"
+          type="pacman"
+          [fullScreen]="true"
+          ><p style="color: white">Cargando</p></ngx-spinner
+        >
+      </div>
     </div>
   </div>
 </div>
