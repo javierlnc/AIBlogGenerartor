@@ -8,7 +8,8 @@
     "paths":{
       "@modules/*":["src/app/modules/*"],
       "@layout/*":["src/app/layout/*"],
-      "@utils/*":["src/app/utils/*"]
+      "@utils/*":["src/app/utils/*"],
+      "@core/*":["src/app/core/*"]
       
     },
     "strict": true,
